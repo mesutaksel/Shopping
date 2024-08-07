@@ -36,11 +36,11 @@ const LoginScreen = ({ navigation }) => {
       <Controller
         control={control}
         name="username"
-        rules={{ required: 'Kullanıcı adı zorunlu' }}
+        rules={{ required: 'Kullanıcı adı gerekli'}}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
             style={styles.input}
-            placeholder="Kullanıcı Adı"
+            placeholder="Kullanici Adi"
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
