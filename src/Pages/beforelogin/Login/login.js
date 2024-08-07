@@ -36,7 +36,7 @@ const LoginScreen = ({ navigation }) => {
       <Controller
         control={control}
         name="username"
-        rules={{ required: 'Kullanıcı adı gerekli' }}
+        rules={{ required: 'Kullanıcı adı zorunlu' }}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
             style={styles.input}
