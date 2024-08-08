@@ -3,9 +3,6 @@ import { View, TextInput, Button, Text, StyleSheet, Alert } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginRequest } from '../../../Redux/Actions';
-import axios from 'axios';
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { API_URL_AUTH } from '../../../config'; 
 import { selectUser, selectError, selectLoading } from '../../../Redux/Selector';
 
 const LoginScreen = ({ navigation }) => {
