@@ -24,4 +24,3 @@ export const logoutRequest = () => ({
     type:LOGOUT_REQUEST,
 })
 
-export const logoutSuccess
