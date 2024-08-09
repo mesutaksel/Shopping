@@ -10,8 +10,10 @@ function* loginSaga(action){
         console.log('kullanıcı adı şifre alındı', action);
         const response = yield call(axios.post, API_URL_AUTH, action.payload);
         console.log('API response:', response);
+
         yield call(AsyncStorage.setItem, 'userToken', response.data.token);
         console.log('Token saved to AsyncStorage:', response.data.token);
+        
         yield put(loginSuccess(response.data));
         
     } catch (error) {

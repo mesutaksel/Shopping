@@ -1,4 +1,3 @@
-// AppNavigator.js
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -16,7 +15,7 @@ const Stack = createStackNavigator();
 
 const AuthStackNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="login" component={LoginScreen} options={{ headerShown: false }} />
+    <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
     <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
   </Stack.Navigator>
 );
@@ -24,30 +23,17 @@ const AuthStackNavigator = () => (
 const MainStackNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen name="HomePage" component={HomePage} />
-    <Stack.Screen name="Card" component={Card} />
     <Stack.Screen name="Profile" component={Profile} />
+    <Stack.Screen name="Card" component={Card} />
   </Stack.Navigator>
 );
 
 const AppNavigator = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const user = useSelector(state => state.user);
-
-  useEffect(() => {
-    const checkLoginStatus = async () => {
-      const token = await AsyncStorage.getItem('userToken');
-      setIsLoggedIn(!!token);
-    };
-    checkLoginStatus();
-  }, []);
-
-  useEffect(() => {
-    setIsLoggedIn(!!user);
-  }, [user]);
-
+  
   return (
     <NavigationContainer>
-      {isLoggedIn ? <MainStackNavigator /> : <AuthStackNavigator />}
+      {user  ? <MainStackNavigator /> : <AuthStackNavigator />}
     </NavigationContainer>
   );
 };

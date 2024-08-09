@@ -9,7 +9,7 @@ const HomePage = ({navigation}) => {
 
   const handleLogout = () => {
     dispatch(logoutRequest());
-    navigation.navigate('login')
+
   }
   return (
     <View style={styles.container}>

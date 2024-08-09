@@ -13,16 +13,13 @@ const LoginScreen = ({ navigation }) => {
   const error = useSelector(selectError);
   const loading = useSelector(selectLoading);
 
-
   const onSubmit = (data) => {
     dispatch(loginRequest(data));
-
   };
 
   React.useEffect(() => {
     if (user) {
-      console.log('HomePage\'e yönlendiriliyor...');
-      navigation.navigate('HomePage');
+      
     }
   }, [user, navigation]);
 
