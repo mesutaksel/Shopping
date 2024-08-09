@@ -16,10 +16,12 @@ const LoginScreen = ({ navigation }) => {
 
   const onSubmit = (data) => {
     dispatch(loginRequest(data));
+
   };
 
   React.useEffect(() => {
     if (user) {
+      console.log('HomePage\'e yönlendiriliyor...');
       navigation.navigate('HomePage');
     }
   }, [user, navigation]);
