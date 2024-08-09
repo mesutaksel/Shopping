@@ -30,7 +30,6 @@ const AuthStackNavigator = () => (
 
 const MainStackNavigator = () => (
   <Stack.Navigator>
-    
     <Stack.Screen name="HomePage" component={HomePage} />
     <Stack.Screen name="Card" component={Card} />
     <Stack.Screen name="Profile" component={Profile} />
