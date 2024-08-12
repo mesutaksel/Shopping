@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector } from 'react-redux';
 import LoginScreen from './Pages/beforelogin/Login/login';
 import RegisterScreen from './Pages/beforelogin/Register/Register';
@@ -19,7 +18,6 @@ const AuthStackNavigator = () => (
     <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
   </Stack.Navigator>
 );
-
 const MainStackNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen name="HomePage" component={HomePage} />

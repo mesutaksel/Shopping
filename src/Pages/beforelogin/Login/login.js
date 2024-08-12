@@ -1,9 +1,12 @@
 import React from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Alert } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, Alert,TouchableOpacity} from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginRequest } from '../../../Redux/Actions';
 import { selectUser, selectError, selectLoading } from '../../../Redux/Selector';
+import styles from './style';
+import style from './style';
+
 
 const LoginScreen = ({ navigation }) => {
   const { control, handleSubmit, formState: { errors } } = useForm();
@@ -31,6 +34,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.AppTitle}>SHOPPİNG</Text>
       <Controller
         control={control}
         name="username"
@@ -66,27 +70,21 @@ const LoginScreen = ({ navigation }) => {
 
       <Button title="Giriş Yap" onPress={handleSubmit(onSubmit)} />
        {loading && <Text>Loading...</Text>}
+
+       
+      <View style={{flexDirection: 'row',marginTop:20}}>
+
+        <Text style={{color:'black',fontSize:15}} > Hesabınız yok mu ?</Text>
+        
+        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+          <Text style={{marginLeft:10,color:'black', fontSize:15}} >
+            Kayıt ol
+          </Text>
+        </TouchableOpacity>
+      
+      </View>       
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 16,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderBottomWidth: 1,
-    marginBottom: 12,
-    paddingHorizontal: 8,
-  },
-  errorText: {
-    color: 'red',
-    marginBottom: 12,
-  },
-});
 
 export default LoginScreen;
