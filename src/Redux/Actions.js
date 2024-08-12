@@ -16,37 +16,37 @@ import {
 export const loginRequest = (credentials) => ({
     type: LOGIN_REQUEST,
     payload:credentials,
-})
+});
 
 export const loginSuccess = (user) => ({
     type:LOGIN_SUCCESS,
     payload: user,
-})
+});
 
 export const LoginFailure = (error) => ({
     type:LOGIN_FAILURE,
     payload:error,
-})
+});
 
 export const logoutRequest = () => ({
     type:LOGOUT_REQUEST,
-})
+});
 
 export const logoutSuccess = () => ({
     type:LOGOUT_SUCCESS,
-})
+});
 
 export const registerRequest = (credentials) => ({
     type:REGISTER_REQUEST,
     payload:credentials,
-})
+});
 
 export const registerSuccess = (user) => ({
     type:REGISTER_SUCCESS,
     payload:user,
-})
+});
 
 export const registerFailure = (error) => ({
     type:REGISTER_FAILURE,
     payload:error,
-})
+});

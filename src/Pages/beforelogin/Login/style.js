@@ -8,11 +8,11 @@ export default StyleSheet.create({
     alignItems:'center',
     left:0,
     right:0,
-    top:30,
-    fontSize:43,
+    top:40,
+    fontSize:50,
     fontWeight:'bold',
     fontStyle:'italic',
-    color:'darkslategrey',
+    color:'black',
   },
   container: {
     flex: 1,
@@ -22,10 +22,9 @@ export default StyleSheet.create({
   },
   input: {
     height: 45,
-    borderColor: 'gray',
     borderBottomWidth: 1,
     marginBottom: 12,
-    paddingHorizontal: 8,
+    paddingHorizontal: 4,
     fontSize:20,
     color:'darkslategrey'
   },

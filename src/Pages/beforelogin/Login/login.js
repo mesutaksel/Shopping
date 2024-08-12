@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginRequest } from '../../../Redux/Actions';
 import { selectUser, selectError, selectLoading } from '../../../Redux/Selector';
 import styles from './style';
-import style from './style';
+
 
 
 const LoginScreen = ({ navigation }) => {
@@ -68,7 +68,7 @@ const LoginScreen = ({ navigation }) => {
       />
       {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
 
-      <Button title="Giriş Yap" onPress={handleSubmit(onSubmit)} />
+      <Button title="Giriş Yap" onPress={handleSubmit(onSubmit)} color={'#333333'}/>
        {loading && <Text>Loading...</Text>}
 
        
