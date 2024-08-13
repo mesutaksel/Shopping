@@ -20,9 +20,9 @@ const AuthStackNavigator = () => (
 );
 const MainStackNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="HomePage" component={HomePage} />
-    <Stack.Screen name="Profile" component={Profile} />
-    <Stack.Screen name="Card" component={Card} />
+    <Stack.Screen name="HomePage" component={HomePage} options={{ headerShown: false }}  />
+    <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }}  />
+    <Stack.Screen name="Card" component={Card} options={{ headerShown: false }} />
   </Stack.Navigator>
 );
 

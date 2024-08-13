@@ -1,35 +1,66 @@
-import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
-import { useDispatch } from 'react-redux';
-import { logoutRequest } from '../../../Redux/Actions';
+import React, { useEffect } from 'react';
+import { View, Text, Button, StyleSheet, FlatList, ActivityIndicator, Image, Alert } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProductsRequest, logoutRequest } from '../../../Redux/Actions';
+import { selectProducts, selectError, selectLoading } from '../../../Redux/Selector';
+import styles from './style'
 
+const HomePage = ({ navigation }) => {
+  const dispatch = useDispatch();
+  
+  // Redux state'inden verileri almak
+  const products = useSelector(selectProducts);
+  const error = useSelector(selectError);
+  const loading = useSelector(selectLoading);
 
-const HomePage = ({navigation}) => {
-  const dispatch =useDispatch();
+  // Ürünleri API'den çekmek için useEffect
+  useEffect(() => {
+    dispatch(fetchProductsRequest());
+  }, [dispatch]);
 
+  // Hata durumunda kullanıcıya alert göster
+  useEffect(() => {
+    if (error) {
+      Alert.alert('Ürün Çekme Hatası', 'Ürünleri çekerken bir hata oluştu.');
+    }
+  }, [error]);
+
+  // Çıkış yapma işlevi
   const handleLogout = () => {
     dispatch(logoutRequest());
+  };
 
-  }
+  // Ürünleri listeleme
+  const renderItem = ({ item }) => (
+    <View style={styles.productItem}>
+      <Image source={{ uri: item.image }} style={styles.productImage} />
+      <View style={styles.productDetails}>
+        <Text style={styles.productTitle}>{item.title}</Text>
+        <Text style={styles.productPrice}>{item.price} $</Text>
+      </View>
+    </View>
+  );
+
+  // Sayfanın yüklenme durumu
+  if (loading) return <ActivityIndicator size="large" color="#0000ff" />;
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>HomePage</Text>
-      <Button title="Logout" onPress={handleLogout} />
+      <Text style={styles.title}>SHOPPİNG </Text>
+      
+      {products.length > 0 ? (  // Eğer en az 1 ürün bile varsa render eder hiç ürün bulunamazsa 'ürün bulunamadı' yazar 
+        <FlatList
+        data={products}
+        keyExtractor={item => item.id.toString()}
+        renderItem={renderItem}
+        contentContainerStyle={styles.productList}
+        />
+      ) : (
+        <Text >Ürün bulunamadı</Text>
+      )}
+      <Button title="Çıkış Yap" onPress={handleLogout} color={'#333333'} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-});
 
 export default HomePage;
