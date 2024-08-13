@@ -17,6 +17,7 @@ export default StyleSheet.create({
   scrollViewContent: {
     flexGrow: 1, // İçeriğin kaydırılabilir olmasını sağlar
     justifyContent: 'center', // İçeriğin ortalanmasını sağlar
+    
   },
   container: {
     flex: 1,
