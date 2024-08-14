@@ -14,7 +14,22 @@ import {
     FETCH_PRODUCTS_SUCCESS,
     FETCH_PRODUCTS_FAILURE,
 
+    ADD_TO_CARD,
+    REMOVE_FROM_CARD,
+
 } from './Constant'
+
+export const addToCard = (productId) => ({
+    type:ADD_TO_CARD,
+    payload:productId,
+});
+
+export const removeFromCard = (productId) => ({
+    type:REMOVE_FROM_CARD,
+    payload:productId,
+});
+
+
 
 export const fetchProductsRequest = () => ({
     type: FETCH_PRODUCTS_REQUEST,

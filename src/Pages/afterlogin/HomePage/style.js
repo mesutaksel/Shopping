@@ -23,9 +23,7 @@ export default StyleSheet.create({
         padding: 10,
         marginVertical: 8,
         backgroundColor: '#E0E0E0',
-        borderRadius: 8,
-    
-    
+        borderRadius: 8,   
       },
       productImage: {
         width: 100,

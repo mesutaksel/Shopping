@@ -6,7 +6,6 @@ import { API_URL_PRODUCTS } from '../config';
 import { LOGIN_REQUEST,LOGOUT_REQUEST, REGISTER_REQUEST,FETCH_PRODUCTS_REQUEST } from './Constant';
 import { logoutSuccess,  loginSuccess , LoginFailure, registerSuccess, registerFailure,fetchProductsSuccess,fetchProductsFailure} from './Actions';
 
-
 function* loginSaga(action){
     try{
         console.log('kullanıcı adı şifre alındı', action);

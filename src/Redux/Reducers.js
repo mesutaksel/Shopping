@@ -9,6 +9,8 @@ import {
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE,
+  ADD_TO_CARD,
+  REMOVE_FROM_CARD,
 } from './Constant';
 
 const initialState = {
@@ -36,9 +38,24 @@ const authReducer = (state = initialState, action) => {
 
     case LOGOUT_SUCCESS:
       return {...state, user: null};
-    
+
     case FETCH_PRODUCTS_SUCCESS:
-        return{...state, loading: false, products: action.payload};
+      return {...state, loading: false, products: action.payload};
+
+    case ADD_TO_CARD: // tekrar bak
+      return {
+        ...state,
+        products: state.products.map(product =>
+          product.id === action.payload ? {...product, inCard: true} : product,
+        ),
+      };
+    case REMOVE_FROM_CARD: // tekrar bak
+      return {
+        ...state,
+        products: state.products.map(product =>
+          product.id === action.payload ? {...product, inCard: false} : product,
+        ),
+      };
 
     default:
       return state;
