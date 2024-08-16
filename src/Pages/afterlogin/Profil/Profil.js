@@ -1,11 +1,15 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
-import styles from './Profil.style';
+import {View, Text, Image, Button} from 'react-native';
+import styles from './style';
 
-const Profil = () => {
+const Profil = ({navigation}) => {
   return (
-    <View>
-      <Text>Profil</Text>
+    <View style={styles.container}>
+      <View style={styles.backButton}>
+        <Button title="GERİ" onPress={() => navigation.goBack()} color={'#333333'}
+        />
+      </View>
+      <Text style={styles.title}>Profilim 🪪</Text>
     </View>
   );
 };

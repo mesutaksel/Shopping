@@ -9,6 +9,7 @@ import Profile from './Pages/afterlogin/Profil/Profil';
 import HomePage from './Pages/afterlogin/HomePage/HomePage';
 import { Provider } from 'react-redux'; 
 import store from './Redux/Store';
+import { selectUser } from './Redux/Selector';
 
 const Stack = createStackNavigator();
 
@@ -27,7 +28,9 @@ const MainStackNavigator = () => (
 );
 
 const AppNavigator = () => {
-  const user = useSelector(state => state.user);
+  // const user = useSelector(state => state.user);
+
+  const user = useSelector(selectUser);
   
   return (
     <NavigationContainer>

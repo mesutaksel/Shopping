@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View,Text,Button,FlatList,ActivityIndicator,Image,  Alert,} from 'react-native';
+import {View,Text,Button,FlatList,ActivityIndicator,Image,  Alert,TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchProductsRequest, logoutRequest,addToCard} from '../../../Redux/Actions';
 import {selectProducts,selectError,selectLoading,} from '../../../Redux/Selector';
@@ -38,6 +38,11 @@ const HomePage = ({navigation}) => {
   const handleGoToCard = () => {
     navigation.navigate('Card');
   };
+
+  const handleGoToProfil = () => {
+    navigation.navigate('Profile');
+  };
+
   
   
   // Ürünleri listeleme
@@ -47,11 +52,15 @@ const HomePage = ({navigation}) => {
       <View style={styles.productDetails}>
         <Text style={styles.productTitle}>{item.title}</Text>
         <Text style={styles.productPrice}>{item.price} $</Text>
-        <Button
-          title={item.inCard ? 'Sepete Eklendi' : 'Sepete Ekle'}
-          onPress={() => handleAddToCard(item.id)}
-          disabled={item.inCard}
-        />
+        <TouchableOpacity
+        style={[styles.cardButton, item.inCard && styles.cardButtonDisabled]}
+        onPress={() => handleAddToCard(item.id)}
+        disabled={item.inCard}
+      >
+        <Text style={styles.cardButtonText}>
+          {item.inCard ? 'Sepete Eklendi' : 'Sepete Ekle'}
+        </Text>
+      </TouchableOpacity>
       </View>
     </View>
   );
@@ -62,6 +71,17 @@ const HomePage = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      
+      <View style={styles.buttonContainer}>
+      <TouchableOpacity style={styles.sepetimButton} onPress={handleGoToCard} >
+        <Text style={styles.sepetimButtonText}>Sepetim 🧺 </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.profilButton} onPress={handleGoToProfil}>
+        <Text style={styles.profilButtonText}>profilim 🪪</Text>  
+      </TouchableOpacity>
+      </View>
+      
       <Text style={styles.title}>SHOPPİNG </Text>
 
       {products.length > 0 ? ( // Eğer en az 1 ürün bile varsa render eder hiç ürün bulunamazsa 'ürün bulunamadı' yazar
@@ -75,7 +95,7 @@ const HomePage = ({navigation}) => {
         <Text>Ürün bulunamadı</Text>
       )}
       <Button title="Çıkış Yap" onPress={handleLogout} color={'#333333'} />
-      <Button title="Sepetim" onPress={handleGoToCard} color={'#333333'} />
+
     </View>
   );
 };
