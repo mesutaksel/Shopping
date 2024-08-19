@@ -7,7 +7,7 @@ export default StyleSheet.create({
   },
 
   title: {
-    fontSize: 48,
+    fontSize: 54,
     fontWeight: 'bold',
     marginBottom: 36,
     top: 78,
@@ -23,4 +23,10 @@ export default StyleSheet.create({
     borderRadius: 30,
     width: 83,
   },
+  label:{
+    fontWeight:'bold',
+    color:'black',
+    fontSize:20,
+    top:100,
+  }
 });
