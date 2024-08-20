@@ -8,14 +8,9 @@ import { logoutSuccess,  loginSuccess , LoginFailure, registerSuccess, registerF
 
 function* loginSaga(action){
     try{
-        console.log('kullanıcı adı şifre alındı', action);
         const response = yield call(axios.post, API_URL_AUTH, action.payload);
-        console.log('API response:', response);
-        
         yield put(loginSuccess(response.data));
-        
     } catch (error) {
-        console.log('Hata oluştu:', error); 
         yield put(LoginFailure(error.message));
     }
 }
@@ -23,13 +18,10 @@ function* loginSaga(action){
 function* registerSaga(action){
     try{
         const response = yield call (axios.post, API_URL_REGISTER, action.payload);
-        console.log('API response:', response);
-
         yield put(registerSuccess(response.data));
     
     }catch(error) {
         yield put(registerFailure(error.message));
-        console.log('Hata Oluştu:', error);
     }
 }
 
@@ -37,7 +29,6 @@ function* logoutSaga(){
     try{
         yield put(logoutSuccess());
     }catch(error){
-        console.log('Error during logout', error);
     }
 }
 
