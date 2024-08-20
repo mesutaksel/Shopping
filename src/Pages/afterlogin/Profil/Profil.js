@@ -1,33 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Button, ActivityIndicator } from 'react-native';
 import axios from 'axios';
-import { decode as base64Decode } from 'base-64';
+import jwt_decode from 'jwt-decode';  // jwt-decode kütüphanesini import edin
 import styles from './style';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../Redux/Selector';
 import { API_URL_REGISTER } from '../../../config';
-
-const base64UrlDecode = (base64Url) => {
-    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    let binaryString = base64Decode(base64);
-    try {
-        return JSON.parse(binaryString);
-    } catch (e) {
-        console.error('Base64 çözümleme hatası:', e);
-        return null;
-    }
-};
-
-const decodeJwtToken = (token) => {
-    if (typeof token !== 'string') {
-        throw new Error('Geçersiz token türü');
-    }
-    const parts = token.split('.');
-    if (parts.length !== 3) {
-        throw new Error('Geçersiz token');
-    }
-    return base64UrlDecode(parts[1]);
-};
 
 const Profil = ({ navigation }) => {
     const [loading, setLoading] = useState(true);
@@ -39,8 +17,8 @@ const Profil = ({ navigation }) => {
             const token = user.token || '';
             if (token) {
                 try {
-                    const decodedToken = decodeJwtToken(token);
-                    const userId = decodedToken?.sub;
+                    const decodedToken = jwt_decode(token);
+                    const userId = decodedToken.sub;
 
                     if (userId) {
                         const response = await axios.get(`${API_URL_REGISTER}/${userId}`);
