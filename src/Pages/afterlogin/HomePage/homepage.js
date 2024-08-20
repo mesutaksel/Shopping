@@ -44,9 +44,14 @@ const HomePage = ({navigation}) => {
   };
 
   
+  const handleGoToProductDetail = product => {
+    navigation.navigate('ProductDetail', { product });
+  };
+  
   
   // Ürünleri listeleme
   const renderItem = ({item}) => (
+    <TouchableOpacity onPress={() => handleGoToProductDetail(item)}>
     <View style={styles.productItem}>
       <Image source={{uri: item.image}} style={styles.productImage} />
       <View style={styles.productDetails}>
@@ -63,6 +68,7 @@ const HomePage = ({navigation}) => {
       </TouchableOpacity>
       </View>
     </View>
+    </TouchableOpacity>
   );
 
   

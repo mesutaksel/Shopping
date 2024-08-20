@@ -10,6 +10,7 @@ import HomePage from './Pages/afterlogin/HomePage/HomePage';
 import { Provider } from 'react-redux'; 
 import store from './Redux/Store';
 import { selectUser } from './Redux/Selector';
+import ProductDetail from './Pages/afterlogin/ProductDetail/ProductDetail';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ const MainStackNavigator = () => (
     <Stack.Screen name="HomePage" component={HomePage} options={{ headerShown: false }}  />
     <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }}  />
     <Stack.Screen name="Card" component={Card} options={{ headerShown: false }} />
+    <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }}/>
   </Stack.Navigator>
 );
 
