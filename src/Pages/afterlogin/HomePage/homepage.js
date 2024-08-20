@@ -16,7 +16,7 @@ const HomePage = ({navigation}) => {
   // Ürünleri API'den çekmek için useEffect
   useEffect(() => {
     dispatch(fetchProductsRequest());
-  }, [dispatch]);
+  }, []);
 
   // Hata durumunda kullanıcıya alert göster
   useEffect(() => {
@@ -26,9 +26,7 @@ const HomePage = ({navigation}) => {
   }, [error]);
 
   // Çıkış yapma işlevi
-  const handleLogout = () => {
-    dispatch(logoutRequest());
-  };
+  
 
   // Sepete Ekle işlevi
   const handleAddToCard = productId => {
@@ -88,7 +86,7 @@ const HomePage = ({navigation}) => {
       </TouchableOpacity>
       </View>
       
-      <Text style={styles.title}>SHOPPİNG </Text>
+      <Text style={styles.title}>SHOPPING </Text>
 
       {products.length > 0 ? ( // Eğer en az 1 ürün bile varsa render eder hiç ürün bulunamazsa 'ürün bulunamadı' yazar
         <FlatList
@@ -100,8 +98,6 @@ const HomePage = ({navigation}) => {
       ) : (
         <Text>Ürün bulunamadı</Text>
       )}
-      <Button title="Çıkış Yap" onPress={handleLogout} color={'#333333'} />
-
     </View>
   );
 };

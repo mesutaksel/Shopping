@@ -32,7 +32,7 @@ function* logoutSaga(){
     }
 }
 
-function * fetchproductsSaga(){
+function* fetchproductsSaga(){
     try {
         const response = yield call (axios.get, API_URL_PRODUCTS);
         yield put (fetchProductsSuccess(response.data));

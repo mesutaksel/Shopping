@@ -32,7 +32,7 @@ const RegisterScreen = ({navigation}) => {
     <KeyboardAvoidingView style={styles.container} behavior="height">
      <ScrollView contentContainerStyle={styles.scrollViewContent} >
         <View style={styles.header}>
-        <Text style={styles.AppTitle}>SHOPPİNG</Text>
+        <Text style={styles.AppTitle}>SHOPPING</Text>
         </View>
       <View style={styles.backButton}>
         <Button title="GERİ" onPress={() => navigation.goBack()} color={'#333333'}  />

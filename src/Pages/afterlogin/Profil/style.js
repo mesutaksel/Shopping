@@ -7,9 +7,9 @@ export default StyleSheet.create({
   },
 
   title: {
-    fontSize: 54,
+    fontSize: 64,
     fontWeight: 'bold',
-    marginBottom: 36,
+    marginBottom: 150,
     top: 78,
     color: 'black',
     textAlign: 'center',
@@ -24,9 +24,25 @@ export default StyleSheet.create({
     width: 83,
   },
   label:{
+    margin:25,
     fontWeight:'bold',
     color:'black',
     fontSize:20,
-    top:100,
-  }
+    marginBottom:0,
+  },
+  logoutButton: {
+    marginLeft:80,
+    marginTop: 100,
+    width: 230,
+    alignItems: 'center',
+    paddingVertical: 15, // Yüksekliği artırır
+    backgroundColor: '#333333', // Butonun arka plan rengi
+    borderRadius: 30, // Köşeleri yuvarlatır
+  },
+  
+  logoutButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });

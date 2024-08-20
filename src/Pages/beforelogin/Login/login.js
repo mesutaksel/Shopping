@@ -21,12 +21,6 @@ const LoginScreen = ({ navigation }) => {
   };
 
   React.useEffect(() => {
-    if (user) {
-      
-    }
-  }, [user, navigation]);
-
-  React.useEffect(() => {
     if (error) {
       Alert.alert('Giriş Hatası', 'Kullanıcı adı veya şifre yanlış.');
     }
@@ -34,7 +28,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.AppTitle}>SHOPPİNG</Text>
+      <Text style={styles.AppTitle}>SHOPPING</Text>
       <Controller
         control={control}
         name="username"
