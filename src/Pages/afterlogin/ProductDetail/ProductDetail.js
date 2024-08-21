@@ -1,9 +1,19 @@
-import React from 'react';
-import {View, Text, Image, StyleSheet, Button,ScrollView,} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Image, StyleSheet, Button,ScrollView,TouchableOpacity} from 'react-native';
 import styles from './style'
+import {addToCard} from '../../../Redux/Actions';
+import { useDispatch } from 'react-redux';
+
 
 const ProductDetail = ({route,navigation}) => {
   const {product} = route.params;
+  const dispatch =useDispatch();
+  const [inCard, setInCard] = useState(product.inCard || false);
+
+  const handleAddToCard = productId => {
+    dispatch(addToCard(productId));
+    setInCard(true);
+  };
 
   return (
     <View style={styles.container}>
@@ -19,6 +29,15 @@ const ProductDetail = ({route,navigation}) => {
       <Text style={styles.title}>{product.title}</Text>
       <Text style={styles.description}>{product.description}</Text>
       <Text style={styles.price}>Price: {product.price} $</Text>
+      <TouchableOpacity
+        style={[styles.cardButton, inCard && styles.cardButtonDisabled]}
+        onPress={() => handleAddToCard(product.id)}
+        disabled={inCard}        
+      >
+        <Text style={styles.cardButtonText}>
+            {inCard ? 'Sepete Eklendi' : 'Sepete Ekle'}
+          </Text>
+      </TouchableOpacity>
       </ScrollView>
     </View>
   );

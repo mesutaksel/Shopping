@@ -46,7 +46,7 @@ export default StyleSheet.create({
     padding:8,
   },
   cardButton: {
-    backgroundColor: '#4682B4', // Burada butonun rengi beyaz yerine mavi olarak ayarlandı
+    backgroundColor: '#4682B4', 
     padding: 8,
     borderRadius: 5,
     alignItems: 'center',

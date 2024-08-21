@@ -43,7 +43,7 @@ const Profil = ({navigation}) => {
     };
 
     fetchUserDetails();
-  }, [user.token]); // sadece token değiştiğinde çalışmasını sağlar
+  }, []); 
 
   if (loading) {
     return (

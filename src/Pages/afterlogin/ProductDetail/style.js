@@ -46,5 +46,20 @@ export default StyleSheet.create({
         flex: 1,
         marginTop: 40,
       },
+      cardButton: {
+        backgroundColor: '#4682B4',
+        padding: 15,
+        borderRadius: 5,
+        alignItems: 'center',
+        marginBottom: 20,
+      },
+      cardButtonDisabled: {
+        backgroundColor: 'gray',
+      },
+      cardButtonText: {
+        fontSize: 18,
+        color: '#fff',
+        fontWeight: 'bold',
+      },
 
 });
