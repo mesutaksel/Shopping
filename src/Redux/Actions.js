@@ -17,7 +17,48 @@ import {
     ADD_TO_CARD,
     REMOVE_FROM_CARD,
 
+
+    SAVE_CART_REQUEST,
+    SAVE_CART_SUCCESS,
+    SAVE_CART_FAILURE,
+
+    FETCH_CART_REQUEST,
+    FETCH_CART_SUCCESS,
+    FETCH_CART_FAILURE,
+
 } from './Constant'
+
+ // buralar çok önemli ona göre davran 
+
+ 
+export const saveCartRequest = (cartData) => ({
+    type: SAVE_CART_REQUEST,
+    payload:cartData,
+});
+
+export const saveCartSuccess = () => ({
+    type: SAVE_CART_SUCCESS,
+});
+
+export const saveCartFailure = (error) => ({
+    type: SAVE_CART_FAILURE,
+    payload: error,
+}); 
+
+export const fetchCartRequest = (userId) => ({
+    type: FETCH_CART_REQUEST,
+    payload:{userId},
+});
+
+export const fetchCartSuccess = (cartItems) => ({
+    type: FETCH_CART_SUCCESS,
+    payload: cartItems,
+});
+
+export const fetchCartFailure = (error) => ({
+    type: FETCH_CART_FAILURE,
+    payload: error,
+});
 
 export const addToCard = (productId) => ({
     type:ADD_TO_CARD,
