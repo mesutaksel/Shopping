@@ -98,6 +98,8 @@ const HomePage = ({navigation}) => {
       ) : (
         <Text>Ürün bulunamadı</Text>
       )}
+      
+
     </View>
   );
 };

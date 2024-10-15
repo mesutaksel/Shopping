@@ -9,3 +9,5 @@ const store =createStore(authReducer,applyMiddleware(sagaMiddleWare));
 sagaMiddleWare.run(rootSaga);
 
 export default store;
+
+    

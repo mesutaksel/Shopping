@@ -6,7 +6,7 @@ import LoginScreen from './Pages/beforelogin/Login/login';
 import RegisterScreen from './Pages/beforelogin/Register/Register';
 import Card from './Pages/afterlogin/Card/Card';
 import Profile from './Pages/afterlogin/Profil/Profil';
-import HomePage from './Pages/afterlogin/HomePage/HomePage';
+import HomePage from './Pages/afterlogin/HomePage/homepage';
 import { Provider } from 'react-redux'; 
 import store from './Redux/Store';
 import { selectUser } from './Redux/Selector';

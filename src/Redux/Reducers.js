@@ -11,6 +11,12 @@ import {
   FETCH_PRODUCTS_FAILURE,
   ADD_TO_CARD,
   REMOVE_FROM_CARD,
+  SAVE_CART_REQUEST,
+  SAVE_CART_FAILURE,
+  SAVE_CART_SUCCESS,
+  FETCH_CART_REQUEST,
+  FETCH_CART_SUCCESS,
+  FETCH_CART_FAILURE,
 } from './Constant';
 
 const initialState = {
@@ -18,6 +24,7 @@ const initialState = {
   loading: false,
   error: null,
   products: [],
+  cartItems: [],
 };
 
 const authReducer = (state = initialState, action) => {
@@ -25,6 +32,7 @@ const authReducer = (state = initialState, action) => {
     case LOGIN_REQUEST:
     case REGISTER_REQUEST:
     case FETCH_PRODUCTS_REQUEST:
+    case FETCH_CART_REQUEST:
       return {...state, loading: true, error: null};
 
     case LOGIN_SUCCESS:
@@ -34,6 +42,8 @@ const authReducer = (state = initialState, action) => {
     case LOGIN_FAILURE:
     case REGISTER_FAILURE:
     case FETCH_PRODUCTS_FAILURE:
+      case FETCH_CART_FAILURE:
+    case SAVE_CART_FAILURE:
       return {...state, loading: false, error: action.payload};
 
     case LOGOUT_SUCCESS:
@@ -43,8 +53,9 @@ const authReducer = (state = initialState, action) => {
       return {...state, loading: false, products: action.payload};
 
     case ADD_TO_CARD: // tekrar bak
-      return {
+    return {
         ...state,
+        cartItems: [...state.cartItems, { productId: action.payload, quantity: 1 }],
         products: state.products.map(product =>
           product.id === action.payload ? {...product, inCard: true} : product,
         ),
@@ -56,6 +67,26 @@ const authReducer = (state = initialState, action) => {
           product.id === action.payload ? {...product, inCard: false} : product,
         ),
       };
+
+      case SAVE_CART_REQUEST:
+        return {
+          ...state,
+          loading: true,  
+        };
+  
+      case SAVE_CART_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          cartItems: action.payload,
+        };
+  
+      case FETCH_CART_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          cartItems: action.payload,
+        };
 
     default:
       return state;
